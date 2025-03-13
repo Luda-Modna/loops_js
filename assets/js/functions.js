@@ -17,6 +17,14 @@ console.log(checkMultiplicity(15, 5));
 console.log(checkMultiplicity(15, 4));
 
 //3
+/**
+ * Function to check if a triangle possibly existed.
+ * @param {number} a - the first side of the triangle
+ * @param {number} b - the second side of the triangle
+ * @param {number} c - the third side of the triangle
+ * @returns {boolean} true - the triangle is real, false - NOT exist
+ */
+
 const isTheareATriangle = function (a, b, c) {
   return isTheareATriangle
     ? a + b > c && a + c > b && b + c > a
@@ -50,6 +58,16 @@ function areasOfARectangle(a, b) {
 console.log(areasOfARectangle(4, 5));
 
 //5
+/**
+ * Function for calculating a single number
+ *
+ *  A simple number is a number bigger than 1, that is divisible only 1 and itself.
+ *
+ * The check is performed to the Math.sqrt(number) to be optimized.
+ *
+ * @param {number}number - the number to be checked
+ * @returns {boolean} true - simple number, false if not
+ */
 function isASimpleNumber(number) {
   if (number < 2) {
     return false;
