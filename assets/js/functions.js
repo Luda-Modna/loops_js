@@ -68,6 +68,7 @@ console.log(areasOfARectangle(4, 5));
  * @param {number}number - the number to be checked
  * @returns {boolean} true - simple number, false if not
  */
+
 function isASimpleNumber(number) {
   if (number < 2) {
     return false;
