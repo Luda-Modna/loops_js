@@ -62,17 +62,14 @@ function Book(author, title, yearOfPublication, publisher, price) {
 const book1 = new Book("St.King", "It", 1986, "KSD", "10 usd");
 console.log(book1);
 
-const protoBook = {};
 
-protoBook.ageBook = function () {
+Book.prototype.ageBook = function () {
   const currentYear = new Date().getFullYear();
-  return currentYear - book1.publication;
+  return currentYear - this.publication;
 };
 
-protoBook.changePrice = function(newPrice) {
+Book.prototype.changePrice = function(newPrice) {
 this.price = newPrice;
 }
 
-Book.prototype = protoBook;
-
-console.log(protoBook)
+console.log(`Book ${book1.title} ${book1.author} ${book1.ageBook()} years old `)
