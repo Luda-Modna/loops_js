@@ -1,45 +1,95 @@
-function sum() {
-  let sum = 0;
-  for (let i = 0; i < arguments.length; i++) {
-    sum += arguments[i];
+
+//сума
+
+function sum(...sumands) {
+  function howToReduce(accum, item) {
+    return (accum += item);
   }
+  const sum = sumands.reduce(howToReduce);
   return sum;
 }
 
-const sumArgs = sum(1, 2, 3, 4, 5, 6);
-console.log(sumArgs);
+const res1 = sum(1, 2, 3, 4, 5, 6);
+console.log(res1);
 
-function result() {
-  let production = 1;
-  for (let i = 0; i < arguments.length; i++) {
-    production *= arguments[i];
+//якщо додаємо то обраховується сума
+//якщо множимо то добуток
+
+function calc(a, ...commands) {
+  function calcComm(accum, item) {
+    if (a === "+") {
+      return (accum += item);
+    } else if (a === "*") {
+      return (accum *= item);
+    } else {
+      return null;
+    }
   }
-  return production;
+  const result = commands.reduce(calcComm);
+  return result;
 }
 
-const resultArgms = result(1, 2, 3);
-console.log(resultArgms);
+const res2 = calc("*", 1, 2, 3, 4, 5, 6);
+console.log(res2);
 
-//operation - може бути + або * і в залежності 
-// елементи функції виконують ту чи іншу операцію
+//привіт + ім'я користувача
 
-function calculate(operation) {
-  let accum;
-  if (operation === "+") {
-    accum = 0;
-    for (let i = 1; i < arguments.length; i++) {
-      accum += arguments[i];
-    }
-  } else if (operation === "*") {
-    accum = 1;
-    for (let i = 1; i < arguments.length; i++) {
-      accum *= arguments[i];
-    }
-  } else {
-    return undefined;
+function greet(greetings, ...names) {
+  let hey = "";
+  for (let i = 0; i < names.length; i++) {
+    hey += greetings + ", " + names[i] + "! ";
   }
-  return accum;
+  return hey;
 }
 
-const resultCalc = calculate("+", 1, 2, 3, 4);
-console.log(resultCalc);
+const greetingsUsers = greet("Hey", "Anna", "Max", "Vita");
+console.log(greetingsUsers);
+
+//знайшла найбільші числа
+
+function findMax(...num) {
+  return Math.max(...num);
+}
+
+console.log(findMax(1, 2, 9, 5));
+
+
+//середнє арифметичне
+
+function average(...numbers) {
+  function sumNumber(accum, item) {
+    return (accum += item);
+  }
+  const sum = numbers.reduce(sumNumber);
+  return sum / numbers.length;
+}
+
+console.log(average(10, 20, 30));
+console.log(average(5, 15));
+
+//виведення категорій і продуктів
+
+function listItems(category, ...products) {
+  let res1 = `Category: ${category}.`;
+  let res2 = ` Products: ${products}.`;
+
+  const result = res1 + res2;
+  return result;
+}
+
+console.log(listItems("Fructs", "Apple", " Banana", " Orange"));
+console.log(listItems("Drinks", "Tea", " Coffee"));
+
+//ввиведення парних чисел
+
+function filterEven(...num1) {
+  let evenNumb = [];
+  for (let i = 1; i < num1.length; i++) {
+    if (num1[i] % 2 === 0) {
+      evenNumb.push(num1[i]);
+    }
+  }
+  return evenNumb;
+}
+
+console.log(filterEven(1, 2, 3, 4, 5, 6));
