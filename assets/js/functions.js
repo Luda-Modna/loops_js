@@ -1,6 +1,6 @@
 //1
 function isWorkingAgePerson(age) {
-  return age ? age >= 16 && age <= 64 : age <= 16 && age >= 64;
+  return age >= 16 && age <= 64 ;
 }
 console.log(isWorkingAgePerson(20));
 console.log(isWorkingAgePerson(4));

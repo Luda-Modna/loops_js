@@ -3,7 +3,7 @@ const customer = {
   firstName: "Jane",
   lastName: "Doe",
   email: "test@test.com",
-  phoneNumber: +380111111111,
+  phoneNumber: '+3801111111111',
   address: {
     city: "Lviv",
     street: "T.Shevchenka",
@@ -23,7 +23,7 @@ console.log(customer);
 const customerFullAddress = customer.getFullAddress();
 console.log(customerFullAddress);
 
-customer.changePhoneNumber(+380000000000);
+customer.changePhoneNumber('+380000000000');
 console.log(customer);
 
 customer.isMale = true;
