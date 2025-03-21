@@ -54,4 +54,3 @@ console.log(`${Math.trunc(precentage)}% - subscribed users`);
 
 const totalAge = users.reduce((sum, u) => sum + u.age, 0);
 const averageAge = totalAge / users.length;
-
