@@ -27,28 +27,25 @@ for (let i = 0; i < 10; i++) {
   users.push(user);
 }
 
-const usersNotSubscribed = users.filter((u) => u.isSubscribed === false);
+const usersNotSubscribed = users.filter((u) => !u.isSubscribed);
 
 users.forEach((u) => console.table(u.getFullName()));
 
-const arrayOfSchoolAgeWomen = users.filter((u) => {
-  if (u.isMale === true && u.age > 6 && u.age < 18) {
-    console.table(u.getFullName());
-  }
-});
+const arrayOfSchoolAgeWomen = users
+  .filter((u) => !u.isMale && u.age >= 6 && u.age <= 18)
+  .map((u) => console.table(u.getFullName()));
 
 const foundUserEmail5 = users.findIndex(
   (u) => u.email === "useremail5@gmail.com"
 );
 const deletedUser = users.splice(foundUserEmail5, 1);
 
-const newEmail = users.findIndex((u) => {
-  if (u.id === 2) {
-    u.email = "test@test.com";
-  }
-});
+const newEmail = users.find((u) => u.id === 2);
+if (newEmail) {
+  newEmail.email = "test@test.com";
+}
 
-const sbscrbdUsers = users.filter((u) => u.isSubscribed === true);
+const sbscrbdUsers = users.filter((u) => u.isSubscribed);
 const precentage = (sbscrbdUsers.length / users.length) * 100;
 console.log(`${Math.trunc(precentage)}% - subscribed users`);
 
