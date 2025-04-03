@@ -1,13 +1,12 @@
-
 //1
 class Post {
-  constructor(id, title, author, text, datePosted, likes = 0, hashtags) {
+  constructor(id, title, author, text, datePosted, hashtags, likesCound = 0) {
     this.id = id;
     this.title = title;
     this.author = author;
     this.text = text;
     this.datePosted = datePosted;
-    this.likes = likes;
+    this.likes = likesCound;
     this.hashtags = hashtags;
   }
   changeText(newText) {
@@ -34,17 +33,17 @@ class Post {
       "#javascript",
     ];
 
-    const validTag = value.filter(
+    const inValidTag = value.filter(
       (value) => !VALID_NAME_HASHTAGS.includes(value)
     );
 
-    if (validTag.length > 0) {
+    if (inValidTag.length > 0) {
       throw new RangeError("invalid hashtag name");
     }
     if (value.length > 6) {
       throw new RangeError("hashtag no more than 6");
     }
-    
+
     this._hashtags = value;
   }
 
@@ -52,29 +51,32 @@ class Post {
     return this._hashtags;
   }
 
-  set likes(value) {
-    if (value < 0) {
-      throw new RangeError("The number of likes can't be negative");
-    }
+  set likesCound(value) {
+    
     if (typeof value !== "number") {
       throw new TypeError("The likes must be a number");
     }
+
+    if (value < 0) {
+      throw new RangeError("The number of likes can't be negative");
+    }
+
     this._likes = value;
   }
 
-  get likes() {
+  get likesCound() {
     return this._likes;
   }
 
   render() {
-    const { title, author, text, datePosted, likes, hashtags } = this;
+    const { title, author, text, datePosted, likesCound, hashtags } = this;
     document.write(` 
     <article>
         <h2> ${author} </h2>
         <h3>${title}</h3>
         <p>${text}</p>
         <p>Date of publication - ${datePosted}</p>
-        <p>Likes - ${likes}</p>
+        <p>Likes - ${likesCound}</p>
         <p>${hashtags}</p>
     </article> 
     `);
@@ -97,7 +99,6 @@ try {
   console.log(err);
 }
 
-
 //2
 class RangeValidator {
   constructor(from, to) {
@@ -106,7 +107,7 @@ class RangeValidator {
   }
 
   isValid(num) {
-    return num >= 5 && num <= 80;
+    return num >= this.from && num <= this.to;
   }
 
   set from(number) {
