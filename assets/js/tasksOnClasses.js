@@ -1,6 +1,6 @@
 //1
 class Post {
-  constructor(id, title, author, text, datePosted, hashtags, likesCound = 0) {
+  constructor(id, title, author, text, datePosted, likesCound, hashtags) {
     this.id = id;
     this.title = title;
     this.author = author;
@@ -52,7 +52,6 @@ class Post {
   }
 
   set likesCound(value) {
-    
     if (typeof value !== "number") {
       throw new TypeError("The likes must be a number");
     }
@@ -91,7 +90,7 @@ try {
     "Biography",
     "2024-03-15",
     1008,
-    ["#post", "#author", "#biography", "#post", "#Kostenko", "#life"]
+    ["#post", "#author", "#post"]
   );
   userPost.render();
   console.log(userPost);
