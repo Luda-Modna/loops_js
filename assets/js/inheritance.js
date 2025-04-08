@@ -34,9 +34,8 @@ const moderator = new Moderator("Mod", "Modovych", 30, false, "mod@mail.com", {
   readPrivate: false,
   sendMessage: true,
 });
-console.log(moderator.getFullNameClass());
 
-moderator.sendMessage(user, "Hello");
+//moderator.sendMessage(user, "Hello");
 
 class Admin extends Moderator {
   constructor(name, surname, age, isMale, email, permissions, category) {
@@ -80,9 +79,49 @@ class FlyingSquirrel extends Squirrel {
 }
 
 const sq = new Squirrel("Simon");
-sq.eat("apple");
-sq.run();
 
 const flyingSq = new FlyingSquirrel("Elvin", 3);
-flyingSq.eat()
-flyingSq.fly()
+
+//абстрактний клас - клас без реалізації
+
+class Figure {
+  constructor(name) {
+    this.name = name;
+  }
+  getArial() {
+    return null;
+  }
+}
+
+class Square extends Figure {
+  constructor(sideLenght) {
+    super("square");
+    this.sideLenght = sideLenght;
+  }
+  getArial() {
+    return this.sideLenght * this.sideLenght;
+  }
+}
+
+const square = new Square(6);
+
+class Rectangle extends Figure {
+  constructor(sideLenght, sideWidtch) {
+    super("rectangle");
+    this.a = sideLenght;
+    this.b = sideWidtch;
+  }
+  getArial() {
+    return this.a * this.b;
+  }
+}
+
+const rectangle = new Rectangle(10, 20);
+
+function calcAria(fig) {
+  if (fig instanceof Figure) {
+    return fig.getArial();
+  }
+  console.log("fig isn't a figure");
+}
+
