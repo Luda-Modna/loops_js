@@ -44,5 +44,3 @@ nameUsers.forEach((name) => {
     }));
   userMap.set(name, userMessage);
 });
-
-
